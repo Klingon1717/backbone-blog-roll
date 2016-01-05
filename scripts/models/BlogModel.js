@@ -1,11 +1,13 @@
 var Backbone = require('backbone');
 
 
-var Blog = Backbone.Model.extend({
+module.exports = Backbone.Model.extend({
 	defaults: {
 		author : ' ',
 		title : ' ',
 		url : ' '
-	}
+	},
+	urlRoot: 'http://tiyfe.herokuapp.com/collections/rollaway',
+	idAttribute: '_id'
 
 })
