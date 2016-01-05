@@ -12680,11 +12680,32 @@ var BlogsCollection = require('./collections/BlogsCollection.js');
 var _ = require('backbone/node_modules/underscore');
 
 $(document).ready(function () {
-	var bCollection = new BlogsCollection();
-	bCollection.on('add', function (b) {
-		var $row = getModelRow(b);
-		$('blogs').append($row);
-	});
+	var form = $('#blog-up');
+	var aut = $('#author');
+	var title = $('#title');
+	var url = $('#url');
+	var create = $('#create');
+	var edit = $('#edit');
+	var posts = $('#posts');
+	var row = _.template($('#blog-row').html());
+	var blogs = new BlogsCollection();
+
+	function onFormSubmit(e) {
+		e.preventDefault();
+		blogs.add({
+			aut: $aut.val(),
+			title: $title.val(),
+			url: $url.val()
+		});
+	}
+	function onBlogAdded(newBlog) {
+		newBlog.save();
+		$posts.append(newHtml);
+	}
+	$form.on('submit', onFormSubmit);
+	blogs.on('add', onBlogsAdded);
+
+	blogs.fetch();
 });
 
 },{"./collections/BlogsCollection.js":4,"./models/BlogModel.js":6,"backbone":1,"backbone/node_modules/underscore":2,"jquery":3}],6:[function(require,module,exports){

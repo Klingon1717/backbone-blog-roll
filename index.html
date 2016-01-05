@@ -5,26 +5,20 @@
 	<link rel= "stylesheet" type = "text/css" href="/styles/main.sass.css">
 </head>
 <body>
-	<div id="container">
+	<div id = "container">
 		<form id = "blog-up">
-		<h1>Backbone Blogroll</h1>
-			<table class = "table">
-				<thead>
-					<tr>
-						<th>Author</th>
-						<th>Title</th>
-						<th>URL</th>
-						<th>Action</th>
-					</tr>
-					
-				</thead>
-			</table>
-			</form>
-	</div>
-
+			<input id="author" type = "text">
+			<input id = "title" type = "text">
+			<input id = "url" type = "text">
+			<button id = "create"></button>
+		</form>
+<ul id = "posts"></ul>
 <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="/node_modules/backbone/node_modules/underscore/underscore-min.js"></script>
 <script type="text/javascript" src="/node_modules/backbone/backbone-min.js"></script>
 <script type="text/javascript" src="/scripts/main.js"></script>
+<script type = "text/template" id = "blog-row">
+	<li><%= author %> - <%= title %> - <%= url %><button>edit</button></li>
+</script>
 </body>
 </html>
